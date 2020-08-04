@@ -12,11 +12,12 @@ class TodoForm extends React.Component {
         event.preventDefault();
         this.props.addTodo(this.state.value)
     }
+    
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
               <input type="text" onChange={this.handleChange} placeholder="input you to do" />
-              <input type="submit" value="add" />
+              <input type="submit" value="add"  />
           </form>
         );
     }

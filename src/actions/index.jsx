@@ -4,3 +4,9 @@ export const addTodo = (text) => {
     type:"ADD_TODO"
     }
 }
+export const deleteItem=(index)=>{
+    return{
+        text:index,
+        type:"DELETE_ITEM"
+    }
+}

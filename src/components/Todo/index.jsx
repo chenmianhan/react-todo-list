@@ -1,13 +1,15 @@
 import React from 'react'
 class Todo extends React.Component {
-    constructor(props) {
-        super(props)
+    
+    onClickdelete=(event)=>{
+        this.props.deleteItem(this.props.index)
     }
     render() {
+        console.log(this.props)
         return (
             <div>
-                <input type="text" readonly="true" value={this.props.todo} />
-                <input type="button" value="delete" />
+                <input type="text" readOnly value={this.props.todo} />
+                <input type="button" value="delete" onClick={this.onClickdelete} />
                 
             </div>
         );
