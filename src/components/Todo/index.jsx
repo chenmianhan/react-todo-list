@@ -1,12 +1,14 @@
 import React from 'react'
 class Todo extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
     }
     render() {
         return (
             <div>
-                {this.props.todo}
+                <input type="text" readonly="true" value={this.props.todo} />
+                <input type="button" value="delete" />
+                
             </div>
         );
     }
