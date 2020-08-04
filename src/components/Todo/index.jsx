@@ -1,9 +1,12 @@
 import React from 'react'
 class Todo extends React.Component {
+    constructor(props){
+        super(props)
+    }
     render() {
         return (
             <div>
-                kiki
+                {this.props.todo}
             </div>
         );
     }

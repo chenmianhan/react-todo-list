@@ -2,13 +2,14 @@ import React from 'react'
 import Todo from '../Todo' 
 class TodoList extends React.Component {
     render() {
+        console.log(this.props)
         return (
             <div>
                <p>To do List</p>
                <div>
                    {
-                       new Array(6).fill(0).map((value,index)=>
-                            <Todo/>
+                        this.props.todoList.map((value,index)=>
+                            <Todo key={index} todo={value}/>
                        )
                    }
                </div>

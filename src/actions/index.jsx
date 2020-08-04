@@ -1,4 +1,6 @@
-export const ADD_TODO = {
-    text:text,
+export const addTodo = (text) => {
+    return {
+        text:text,
     type:"ADD_TODO"
+    }
 }
