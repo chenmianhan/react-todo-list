@@ -1,16 +1,17 @@
 import React from 'react'
 class TodoForm extends React.Component {
-
-    handleChange = (e) => {
-        // let newlength = Number(e.target.value);
-        // // store.dispatch({type: INIT, length})
-        // this.props.init(newlength)
-        // this.setState({
-        //     length : newlength
-        // });
+    constructor(props) {
+        super(props);
+        this.state = {value: ''};
+    
+      }
+    handleChange = (event) => {
+        this.setState({value: event.target.value});
     }
-    handleSubmit=(e)=>{
-
+    handleSubmit=(event)=>{
+        console.log(this.state.value)
+        event.preventDefault();
+        this.props.addTodo(this.state.value)
     }
     render() {
         return (
