@@ -1,13 +1,7 @@
 import React from 'react'
 import Todo from '../Todo'
-import { getTodoList,deleteTodoList , putTodoList} from '../../store/api'
+import { deleteTodoList , putTodoList} from '../../store/api'
 class DoneList extends React.Component {
-    // deleteItem = (index) => {
-    //     this.props.deleteItem(index)
-    // }
-    // changeStatus = (status, index) => {
-    //     this.props.changeStatus(status, index)
-    // }
     deleteItem = (index) => {
         deleteTodoList(index).then((res)=>{
             this.props.deleteItem(res.data.id);
@@ -22,24 +16,11 @@ class DoneList extends React.Component {
             this.props.changeStatus(status,index)
             
         })
-        
     }
-    // componentDidMount() {
-    //     getTodoList().then((res) => {
-        
-    //         res.data.forEach(item => {
-    //             this.props.addTodo({
-    //                 text:item.content,
-    //                 isDone:item.status,
-    //                 id:item.id
-    //         })
-    //         });
-    //     })
-    // }
     render() {
         return (
             <div>
-                <p>To do List</p>
+               
                 <div>
                     {
                         this.props.todoList.filter(item => item.isDone === false)

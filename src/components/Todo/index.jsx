@@ -1,5 +1,7 @@
 import React from 'react'
 import './index.css';
+import { Button, Space,Input } from 'antd';
+import { DeleteTwoTone } from '@ant-design/icons';
 
 class Todo extends React.Component {
     
@@ -14,11 +16,14 @@ class Todo extends React.Component {
     render() {
         let classname=this.props.isDone?'done':'todo'
         return (
-            <div>
+            <Space>
+           
                 <input className={classname} type="text" readOnly value={this.props.todo}  onClick={this.onClickChangeStatus}/>
-                <input type="button" value="delete" onClick={this.onClickdelete} />
-                
-            </div>
+                <Button onClick={this.onClickdelete}>
+                <DeleteTwoTone />delete
+              </Button>
+    
+            </Space>
         );
     }
 }

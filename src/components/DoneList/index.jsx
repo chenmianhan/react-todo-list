@@ -1,6 +1,6 @@
 import React from 'react'
 import Todo from '../Todo'
-import { getTodoList,deleteTodoList , putTodoList} from '../../store/api'
+import { deleteTodoList , putTodoList} from '../../store/api'
 class DoneList extends React.Component {
     deleteItem = (index) => {
         deleteTodoList(index).then((res)=>{
@@ -33,7 +33,6 @@ class DoneList extends React.Component {
     render() {
         return (
             <div>
-                <p>To do List</p>
                 <div>
                     {
                         this.props.todoList.filter(item => item.isDone === true)
