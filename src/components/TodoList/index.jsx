@@ -20,16 +20,17 @@ class TodoList extends React.Component {
     }
 
     componentDidMount() {
-        getTodoList().then((res) => {
-        
-            res.data.forEach(item => {
-                this.props.addTodo({
-                    text:item.content,
-                    isDone:item.status,
-                    id:item.id
+        if(this.props.todoList.length === 0) {
+            getTodoList().then((res) => {
+                res.data.forEach(item => {
+                    this.props.addTodo({
+                        text:item.content,
+                        isDone:item.status,
+                        id:item.id
+                })
+                });
             })
-            });
-        })
+        }
     }
     componentWillReceiveProps(){
         console.log(this.props)

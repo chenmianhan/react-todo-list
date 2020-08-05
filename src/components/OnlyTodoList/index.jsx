@@ -24,18 +24,18 @@ class DoneList extends React.Component {
         })
         
     }
-    componentDidMount() {
-        getTodoList().then((res) => {
+    // componentDidMount() {
+    //     getTodoList().then((res) => {
         
-            res.data.forEach(item => {
-                this.props.addTodo({
-                    text:item.content,
-                    isDone:item.status,
-                    id:item.id
-            })
-            });
-        })
-    }
+    //         res.data.forEach(item => {
+    //             this.props.addTodo({
+    //                 text:item.content,
+    //                 isDone:item.status,
+    //                 id:item.id
+    //         })
+    //         });
+    //     })
+    // }
     render() {
         return (
             <div>
