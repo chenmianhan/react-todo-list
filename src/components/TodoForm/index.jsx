@@ -1,4 +1,5 @@
 import React from 'react'
+import {postTodoList} from '../../store/api'
 class TodoForm extends React.Component {
     constructor(props) {
         super(props);
@@ -10,13 +11,24 @@ class TodoForm extends React.Component {
     }
     handleSubmit=(event)=>{
         event.preventDefault();
-        this.props.addTodo(this.state.value)
+        
+        postTodoList({
+            content:this.state.value,
+            status:false
+        }).then((res)=>{
+            this.props.addTodo({
+                id: res.data.id,
+                text: res.data.content,
+                isDone: res.data.status
+            })
+        })
+        document.getElementById("todo").value=''
     }
     
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-              <input type="text" onChange={this.handleChange} placeholder="input you to do" />
+              <input id="todo" type="text" onChange={this.handleChange} placeholder="input you to do" />
               <input type="submit" value="add"  />
           </form>
         );

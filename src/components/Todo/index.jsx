@@ -1,12 +1,12 @@
 import React from 'react'
 import './index.css';
+
 class Todo extends React.Component {
     
     onClickdelete=(event)=>{
         this.props.deleteItem(this.props.index)
     }
     onClickChangeStatus=(event)=>{
-
         this.props.changeStatus(
             !this.props.isDone,this.props.index
         )

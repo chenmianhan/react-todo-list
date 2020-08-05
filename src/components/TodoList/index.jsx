@@ -1,11 +1,38 @@
 import React from 'react'
 import Todo from '../Todo'
+import { getTodoList,deleteTodoList , putTodoList} from '../../store/api'
 class TodoList extends React.Component {
     deleteItem = (index) => {
-        this.props.deleteItem(index)
+        deleteTodoList(index).then((res)=>{
+            this.props.deleteItem(res.data.id);
+        })
     }
     changeStatus=(status,index)=>{
-        this.props.changeStatus(status,index)
+        putTodoList({
+            status:status,
+            id:index
+        }).then((res)=>{
+            console.log(res.data)
+            this.props.changeStatus(status,index)
+            
+        })
+        
+    }
+
+    componentDidMount() {
+        getTodoList().then((res) => {
+        
+            res.data.forEach(item => {
+                this.props.addTodo({
+                    text:item.content,
+                    isDone:item.status,
+                    id:item.id
+            })
+            });
+        })
+    }
+    componentWillReceiveProps(){
+        console.log(this.props)
     }
 
     render() {
@@ -20,7 +47,7 @@ class TodoList extends React.Component {
                                 todo={value.text}
                                 deleteItem={this.deleteItem}
                                 changeStatus={this.changeStatus}
-                                index={index} 
+                                index={value.id} 
                                 isDone={value.isDone} />
                         )
                     }
