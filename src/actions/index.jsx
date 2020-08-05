@@ -1,8 +1,9 @@
-export const addTodo = (text) => {
+export const addTodo = (value) => {
     return {
-        text:text,
+        text:value.text,
     type:"ADD_TODO",
-    isDone:false
+    isDone:value.isDone,
+    id:value.id
     }
 }
 export const deleteItem=(index)=>{

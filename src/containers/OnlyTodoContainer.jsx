@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import TodoList from "../components/TodoList";
-import { deleteItem,changeStatus,addTodo } from "../actions";
+import OnlyTodoList from "../components/OnlyTodoList";
+import { deleteItem,changeStatus ,addTodo} from "../actions";
 const mapStateToProps=state=>{
     return{
        todoList: state.todoList
@@ -19,5 +19,5 @@ const mapDispatchToProps=dispatch=>{
         }
     }
 }
-const TodoListContainer=connect(mapStateToProps,mapDispatchToProps)(TodoList)
-export default TodoListContainer
+const OnlyTodoListContainer=connect(mapStateToProps,mapDispatchToProps)(OnlyTodoList)
+export default OnlyTodoListContainer
