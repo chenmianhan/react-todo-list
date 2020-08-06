@@ -6,7 +6,7 @@ import { HashRouter, Route, Link } from 'react-router-dom';
 import DoneListContainer from "./containers/DoneListContainer";
 import { Layout,Menu } from 'antd';
 import { CopyOutlined,CheckOutlined,ClockCircleOutlined } from '@ant-design/icons';
-const { Header, Footer, Sider, Content } = Layout;
+const { Footer, Sider, Content } = Layout;
 function App() {
   return (
     <HashRouter>

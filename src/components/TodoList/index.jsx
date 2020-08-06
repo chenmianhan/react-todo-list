@@ -1,19 +1,23 @@
 import React from 'react'
 import Todo from '../Todo'
-import { List, Typography, Divider } from 'antd';
-import { getTodoList, deleteTodoList, putTodoList } from '../../store/api'
+import { List, Divider } from 'antd';
+import { getTodoList, deleteTodoList, patchTodoList } from '../../store/api'
 class TodoList extends React.Component {
     deleteItem = (index) => {
         deleteTodoList(index).then((res) => {
-            this.props.deleteItem(res.data.id);
+            console.log("deleteaItem:")
+            console.log(res)
+            this.props.deleteItem(index);
         })
     }
-    changeStatus = (status, index) => {
-        putTodoList({
+    changeStatus = (status, index,content) => {
+        patchTodoList({
             status: status,
-            id: index
+            id: index,
+            content:content
         }).then((res) => {
-            console.log(res.data)
+            console.log(" patchTodoList:")
+            console.log(res)
             this.props.changeStatus(status, index)
 
         })
@@ -24,6 +28,8 @@ class TodoList extends React.Component {
         if (this.props.todoList.length === 0) {
             getTodoList().then((res) => {
                 res.data.forEach(item => {
+                    console.log("getTodoList:")
+                    console.log(res)
                     this.props.addTodo({
                         text: item.content,
                         isDone: item.status,
@@ -33,9 +39,7 @@ class TodoList extends React.Component {
             })
         }
     }
-    componentWillReceiveProps() {
-        console.log(this.props)
-    }
+
 
     render() {
         return (
@@ -46,7 +50,7 @@ class TodoList extends React.Component {
                         <div>
                             {
                                 this.props.todoList.map((value, index) =>
-                                    <List.Item>
+                                    <List.Item key={index} >
                                         <Todo
                                             key={index}
                                             todo={value.text}

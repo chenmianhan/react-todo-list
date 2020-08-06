@@ -1,18 +1,18 @@
 import React from 'react'
 import Todo from '../Todo'
-import { deleteTodoList , putTodoList} from '../../store/api'
+import { deleteTodoList ,  patchTodoList} from '../../store/api'
 class DoneList extends React.Component {
     deleteItem = (index) => {
         deleteTodoList(index).then((res)=>{
-            this.props.deleteItem(res.data.id);
+            this.props.deleteItem(index);
         })
     }
-    changeStatus=(status,index)=>{
-        putTodoList({
+    changeStatus=(status,index,content)=>{
+        patchTodoList({
             status:status,
-            id:index
+            id:index,
+            content:content
         }).then((res)=>{
-            console.log(res.data)
             this.props.changeStatus(status,index)
             
         })

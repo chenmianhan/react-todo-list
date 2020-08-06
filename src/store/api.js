@@ -1,5 +1,6 @@
 import axios from "axios";
-const URL = ' https://5e9ec500fb467500166c4658.mockapi.io/todos'
+//const URL = ' https://5e9ec500fb467500166c4658.mockapi.io/todos'
+const URL = 'http://localhost:8888/todos'
 export function getTodoList() {
     return axios({
         url: URL,
@@ -21,18 +22,10 @@ export function postTodoList(data){
         data:data
     })
 }
-export function putTodoList(data){
+export function patchTodoList(data){
     return axios({
         url:URL+'/'+data.id,
-        method :'put',
+        method :'patch',
         data:data
     })
 }
-
-/* export default {
-    getTodoList : () => {
-        return axios({
-
-        })
-    }
-} */

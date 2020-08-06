@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.css';
-import { Button, Space,Input } from 'antd';
+import { Button, Space} from 'antd';
 import { DeleteTwoTone } from '@ant-design/icons';
 
 class Todo extends React.Component {
@@ -10,7 +10,7 @@ class Todo extends React.Component {
     }
     onClickChangeStatus=(event)=>{
         this.props.changeStatus(
-            !this.props.isDone,this.props.index
+            !this.props.isDone,this.props.index,this.props.todo
         )
     }
     render() {

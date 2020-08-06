@@ -18,12 +18,14 @@ class TodoForm extends React.Component {
             content:this.state.value,
             status:false
         }).then((res)=>{
+            console.log("postTodoList:"+res)
             this.props.addTodo({
                 id: res.data.id,
                 text: res.data.content,
                 isDone: res.data.status
             })
         })
+        console.log(this.state.value)
         document.getElementById("todo").value=''
     }
     
@@ -31,8 +33,8 @@ class TodoForm extends React.Component {
         return (
             <Space>
            
-              <Input id="todo" type="text" onChange={this.handleChange} placeholder="input you to do" />
-              <Button onClick={this.handleSubmit}>
+              <Input id="todo" type="text" onChange={this.handleChange} placeholder="please add your todo" value={this.state.vaule } />
+              <Button onClick={this.handleSubmit} >
               <EditTwoTone/>add
               </Button>
           </Space>
