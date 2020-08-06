@@ -18,14 +18,14 @@ class TodoForm extends React.Component {
             content:this.state.value,
             status:false
         }).then((res)=>{
-            console.log("postTodoList:"+res)
+            
             this.props.addTodo({
                 id: res.data.id,
                 text: res.data.content,
                 isDone: res.data.status
             })
         })
-        console.log(this.state.value)
+    
         document.getElementById("todo").value=''
     }
     

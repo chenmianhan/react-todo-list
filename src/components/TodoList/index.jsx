@@ -5,8 +5,7 @@ import { getTodoList, deleteTodoList, patchTodoList } from '../../store/api'
 class TodoList extends React.Component {
     deleteItem = (index) => {
         deleteTodoList(index).then((res) => {
-            console.log("deleteaItem:")
-            console.log(res)
+            
             this.props.deleteItem(index);
         })
     }
@@ -16,8 +15,7 @@ class TodoList extends React.Component {
             id: index,
             content:content
         }).then((res) => {
-            console.log(" patchTodoList:")
-            console.log(res)
+         
             this.props.changeStatus(status, index)
 
         })
@@ -28,8 +26,7 @@ class TodoList extends React.Component {
         if (this.props.todoList.length === 0) {
             getTodoList().then((res) => {
                 res.data.forEach(item => {
-                    console.log("getTodoList:")
-                    console.log(res)
+                   
                     this.props.addTodo({
                         text: item.content,
                         isDone: item.status,
