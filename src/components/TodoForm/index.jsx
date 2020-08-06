@@ -25,15 +25,14 @@ class TodoForm extends React.Component {
                 isDone: res.data.status
             })
         })
-    
-        document.getElementById("todo").value=''
+    this.setState({value:''})
+       // document.getElementById("todo").value=''
     }
     
     render() {
         return (
-            <Space>
-           
-              <Input id="todo" type="text" onChange={this.handleChange} placeholder="please add your todo" value={this.state.vaule } />
+            <Space>       
+              <Input id="todo" type="text" onChange={this.handleChange} placeholder="please add your todo" value={this.state.value } />
               <Button onClick={this.handleSubmit} >
               <EditTwoTone/>add
               </Button>
